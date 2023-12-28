@@ -54,5 +54,11 @@ fun TopAppBarKontak(
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigateUp: () -> Unit = {}
 ){
+    CenterAlignedTopAppBar(title = { Text(title) },
+        modifier = modifier,
+        scrollBehavior = scrollBehavior,
+        navigationIcon = {
 
+        }
+        )
 }
