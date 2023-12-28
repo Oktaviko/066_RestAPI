@@ -42,10 +42,12 @@ import com.example.dataserver.R
 import com.example.dataserver.ui.home.viewModel.KontakUIState
 
 @Composable
-fun HomeScreen(
+fun HomeStatus(
     kontakUIState: KontakUIState,
     retryAction: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onDeleteClick: (Kontak) -> Unit = {},
+    onDetailClick: (Int) -> Unit
 ){
     when (kontakUIState){
         is KontakUIState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
