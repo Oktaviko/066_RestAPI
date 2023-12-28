@@ -1,4 +1,4 @@
-package com.example.dataserver.ui.kontak.viewmodel
+package com.example.dataserver.ui.home.viewModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

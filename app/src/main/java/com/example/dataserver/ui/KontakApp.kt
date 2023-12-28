@@ -23,6 +23,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dataserver.R
+import com.example.dataserver.navigation.PengelolaHalaman
 import com.example.dataserver.ui.home.screen.HomeScreen
 import com.example.dataserver.ui.home.viewModel.HomeViewModel
 import com.example.dataserver.ui.theme.PenyediaViewModel
@@ -41,9 +42,7 @@ fun KontakApp(
                 .fillMaxSize()
                 .padding(it)
         ){
-            HomeScreen(kontakUIState = homeViewModel.kontakUIState,
-                retryAction = homeViewModel::getKontak
-            )
+            PengelolaHalaman()
         }
     }
 }
