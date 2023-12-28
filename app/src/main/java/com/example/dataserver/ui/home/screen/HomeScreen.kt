@@ -55,6 +55,9 @@ fun HomeStatus(
             kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth(),
             onDetailClick = {
                 onDetailClick(it.id)
+            },
+            onDeleteClick = {
+                onDeleteClick(it)
             }
         )
 
