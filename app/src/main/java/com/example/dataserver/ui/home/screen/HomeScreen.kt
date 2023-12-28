@@ -41,6 +41,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dataserver.Model.Kontak
 import com.example.dataserver.R
 import com.example.dataserver.navigation.DestinasiNavigasi
+import com.example.dataserver.ui.TopAppBarKontak
 import com.example.dataserver.ui.home.viewModel.HomeViewModel
 import com.example.dataserver.ui.home.viewModel.KontakUIState
 import com.example.dataserver.ui.theme.PenyediaViewModel
@@ -180,4 +181,15 @@ fun HomeScreen(
 ){
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
+    Scaffold(
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            TopAppBarKontak(title = DestinasiHome.titleRes,
+                canNavigateBack = false,
+                scrollBehavior = scrollBehavior,
+
+                )
+        },
+        floatingActionButton =
+    )
 }
