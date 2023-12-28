@@ -32,10 +32,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dataserver.Model.Kontak
@@ -45,6 +43,7 @@ import com.example.dataserver.ui.TopAppBarKontak
 import com.example.dataserver.ui.home.viewModel.HomeViewModel
 import com.example.dataserver.ui.home.viewModel.KontakUIState
 import com.example.dataserver.ui.theme.PenyediaViewModel
+
 
 @Composable
 fun HomeStatus(
@@ -123,50 +122,46 @@ fun KontakLayout(
 @Composable
 fun KontakCard(
     kontak: Kontak,
-    onDeleteClick : (Kontak) -> Unit{},
+    onDeleteClick: (Kontak) -> Unit = {},
     modifier: Modifier = Modifier
 ){
     Card(
         modifier = modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ){
+        shape = MaterialTheme.shapes.medium,
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ) {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ){
+            modifier = Modifier.padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
             Row(
                 modifier = Modifier.fillMaxWidth()
-            ){
+            ) {
                 Text(
                     text = kontak.nama,
                     style = MaterialTheme.typography.titleLarge,
                 )
                 Spacer(Modifier.weight(1f))
-                Icon(
-                    imageVector = Icons.Default.Phone,
-                    contentDescription = null,
-                )
+                IconButton(onClick = {onDeleteClick(kontak)}) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = null,
+                    )
+                }
                 Text(
                     text = kontak.nohp,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
                 )
-            }
-            Text(
-                text = kontak.alamat,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Spacer(Modifier.weight(1f))
-            IconButton(onClick = {onDeleteClick(kontak)}) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = null,
+                Text(
+                    text = kontak.alamat,
+                    style = MaterialTheme.typography.titleMedium,
                 )
             }
         }
     }
 }
 
-object DestinasiHome : DestinasiNavigasi{
+object DestinasiHome : DestinasiNavigasi {
     override val route = "home"
     override val titleRes = "Kontak"
 }
