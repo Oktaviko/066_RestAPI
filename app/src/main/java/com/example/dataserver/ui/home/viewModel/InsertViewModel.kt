@@ -13,7 +13,7 @@ import com.example.dataserver.repository.toInsertUiEvent
 import com.example.dataserver.repository.toKontak
 import kotlinx.coroutines.launch
 
-class InsertViewModel(private val kontakRepository: KontakRepository) : ViewModel() {
+class InsertViewModel(private val kontakRepository: KontakRepository) : ViewModel(){
     var insertKontakState by mutableStateOf(InsertUiState())
         private set
 
@@ -25,26 +25,29 @@ class InsertViewModel(private val kontakRepository: KontakRepository) : ViewMode
         viewModelScope.launch {
             try {
                 kontakRepository.insertKontak(insertKontakState.insertUiEvent.toKontak())
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
 }
 
-data class InsertUiState(
-    val insertUiEvent: InsertUiEvent = InsertUiEvent(),
-)
-
 data class InsertUiEvent(
-    val id : Int = 0,
-    val nama : String = "",
-    val email : String = "",
-    val noHp : String = "",
+    val id: Int = 0,
+    val nama: String = "",
+    val alamat: String = "",
+    val nohp: String = "",
 )
 
-fun Kontak.toUiStateKontak():InsertUiState = InsertUiState(
-    insertUiEvent = toInsertUiEvent(),
+fun InsertUiEvent.toKontak() : Kontak = Kontak(
+    id = id,
+    nama = nama,
+    alamat = alamat,
+    nohp = nohp,
+)
+
+data class InsertUiState(
+    val insertUiEvent: InsertUiEvent = InsertUiEvent()
 )
 
 fun Kontak.toInsertUiEvent(): InsertUiEvent = InsertUiEvent(
@@ -52,4 +55,8 @@ fun Kontak.toInsertUiEvent(): InsertUiEvent = InsertUiEvent(
     nama = nama,
     alamat = alamat,
     nohp = nohp
+)
+
+fun Kontak.toUiStateKontak(): InsertUiState = InsertUiState(
+    insertUiEvent = toInsertUiEvent()
 )

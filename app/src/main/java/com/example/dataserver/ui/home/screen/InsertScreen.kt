@@ -26,7 +26,6 @@ import com.example.dataserver.repository.InsertUiEvent
 import com.example.dataserver.repository.InsertUiState
 import com.example.dataserver.repository.InsertViewModel
 import com.example.dataserver.ui.TopAppBarKontak
-import com.example.dataserver.ui.home.viewModel.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 
@@ -37,11 +36,11 @@ fun FormInputSiswa(
     modifier: Modifier = Modifier,
     onValueChange: (InsertUiEvent) -> Unit = {},
     enabled: Boolean = true
-) {
+){
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
+    ){
         OutlinedTextField(
             value = insertUiEvent.nama,
             onValueChange ={onValueChange(insertUiEvent.copy(nama = it))},
@@ -70,9 +69,9 @@ fun FormInputSiswa(
             enabled = enabled
         )
 
-        if (enabled){
+        if (enabled) {
             Text(
-                text = "Isi semua Data",
+                text = "Isi Semua Data",
                 modifier = Modifier.padding(start = 12.dp)
             )
         }
@@ -83,6 +82,8 @@ fun FormInputSiswa(
         )
     }
 }
+
+
 @Composable
 fun EntryKontakBody(
     insertUiState: InsertUiState,
@@ -93,12 +94,14 @@ fun EntryKontakBody(
     Column(
         verticalArrangement = Arrangement.spacedBy(18.dp),
         modifier = modifier.padding(12.dp)
-    ){
-        FormInputSiswa(insertUiEvent = insertUiState.insertUiEvent,
+    ) {
+        FormInputSiswa(
+            insertUiEvent = insertUiState.insertUiEvent,
             onValueChange = onSiswaValueChange,
             modifier = Modifier.fillMaxWidth()
         )
-        Button(onClick = onSaveClick,
+        Button(
+            onClick = onSaveClick,
             shape = MaterialTheme.shapes.small,
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -107,22 +110,21 @@ fun EntryKontakBody(
     }
 }
 
-object DestinasiEntry : DestinasiNavigasi {
+object DestinasiEntry : DestinasiNavigasi{
     override val route = "item_entry"
     override val titleRes = "Entry Siswa"
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EntryKontakScreen(
     navigateBack: () -> Unit,
+    modifier: Modifier = Modifier,
     viewModel: InsertViewModel = viewModel(factory = PenyediaViewModel.Factory),
 ){
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-
     Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBarKontak(
                 title = DestinasiEntry.titleRes,
@@ -130,8 +132,7 @@ fun EntryKontakScreen(
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
             )
-        }
-    ){innerPadding ->
+        }) { innerPadding ->
         EntryKontakBody(
             insertUiState = viewModel.insertKontakState,
             onSiswaValueChange = viewModel::updateInsertKontakState,
