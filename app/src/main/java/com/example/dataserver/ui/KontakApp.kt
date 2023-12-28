@@ -34,8 +34,7 @@ fun KontakApp(
 ){
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { TopAppBar(scrollBehavior = scrollBehavior)}
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
     ){
         Surface(
             modifier = Modifier
