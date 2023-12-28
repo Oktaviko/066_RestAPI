@@ -39,6 +39,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.dataserver.Model.Kontak
 import com.example.dataserver.R
+import com.example.dataserver.navigation.DestinasiNavigasi
 import com.example.dataserver.ui.home.viewModel.KontakUIState
 
 @Composable
@@ -158,4 +159,9 @@ fun KontakCard(
             }
         }
     }
+}
+
+object DestinasiHome : DestinasiNavigasi{
+    override val route = "home"
+    override val titleRes = "Kontak"
 }
