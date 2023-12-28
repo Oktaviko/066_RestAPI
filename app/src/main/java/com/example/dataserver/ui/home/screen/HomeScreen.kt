@@ -190,6 +190,13 @@ fun HomeScreen(
 
                 )
         },
-        floatingActionButton =
+        floatingActionButton = {
+            FloatingActionButton(onClick = navigateToItemEntry,
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(18.dp)
+            ) {
+
+            }
+        }
     )
 }
