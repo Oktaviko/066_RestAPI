@@ -1,5 +1,6 @@
 package com.example.dataserver.ui
 
+import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -46,14 +47,12 @@ fun KontakApp(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier = Modifier) {
-    CenterAlignedTopAppBar(
-        scrollBehavior = scrollBehavior,
-        title = {
-            Text(text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.headlineSmall,
-                )
-        },
-        modifier = modifier
-    )
+fun TopAppBarKontak(
+    title: String,
+    canNavigateBack: Boolean,
+    modifier : Modifier = Modifier,
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+    navigateUp: () -> Unit = {}
+){
+
 }
