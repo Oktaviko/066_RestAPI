@@ -37,10 +37,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.dataserver.Model.Kontak
 import com.example.dataserver.R
 import com.example.dataserver.navigation.DestinasiNavigasi
+import com.example.dataserver.ui.home.viewModel.HomeViewModel
 import com.example.dataserver.ui.home.viewModel.KontakUIState
+import com.example.dataserver.ui.theme.PenyediaViewModel
 
 @Composable
 fun HomeStatus(
@@ -168,7 +171,10 @@ object DestinasiHome : DestinasiNavigasi{
 
 @Composable
 fun HomeScreen(
-
+    navigateToItemEntry: () -> Unit,
+    modifier: Modifier = Modifier,
+    onDetailClick: (Int) -> Unit = {},
+    viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ){
 
 }
