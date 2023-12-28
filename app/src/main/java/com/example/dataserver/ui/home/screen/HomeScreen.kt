@@ -109,7 +109,8 @@ fun KontakLayout(
     ){
             items(kontak) {kontak ->
                 KontakCard(kontak = kontak,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .clickable { onDetailClick(kontak) },
                     onDeleteClick = {onDeleteClick(kontak)
                     }
@@ -169,6 +170,7 @@ object DestinasiHome : DestinasiNavigasi{
     override val titleRes = "Kontak"
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
@@ -176,5 +178,6 @@ fun HomeScreen(
     onDetailClick: (Int) -> Unit = {},
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ){
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
 }
