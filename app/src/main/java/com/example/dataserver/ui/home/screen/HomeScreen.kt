@@ -51,7 +51,11 @@ fun HomeStatus(
 ){
     when (kontakUIState){
         is KontakUIState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
-        is KontakUIState.Success -> KontakLayout(kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth()
+        is KontakUIState.Success -> KontakLayout(
+            kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth(),
+            onDetailClick = {
+                onDetailClick(it.id)
+            }
         )
 
         is KontakUIState.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
